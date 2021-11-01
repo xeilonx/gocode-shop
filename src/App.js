@@ -1,8 +1,10 @@
 import "./App.css";
 import Header from "./components/Header/Header";
 import Products from "./components/Products/Products";
+import React from "react";
+import { useState } from "react";
 
-const products = [
+const initProducts = [
   {
     id: 1,
     title: "Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops",
@@ -272,10 +274,26 @@ const products = [
 ];
 
 function App() {
+  const [productsDetails, setProductsDetails] = useState(initProducts);
+  const categories = initProducts
+    .map((p) => p.category)
+    .filter((value, index, array) => array.indexOf(value) === index);
+
+  const handleChange = (e) => {
+    if (e.target.value === "all") {
+      setProductsDetails(initProducts);
+    } else {
+      const filterCategories = initProducts.filter(
+        (product) => product.category === e.target.value
+      );
+      setProductsDetails(filterCategories);
+    }
+  };
+
   return (
-    <div className="App">
-      <Header />
-      <Products products={products} />
+    <div>
+      <Header categories={categories} handleChange={handleChange} />
+      <Products productsDetails={productsDetails} />
     </div>
   );
 }

@@ -1,8 +1,8 @@
 import "./Product.css";
 
-function Product({ id, title, price, image }) {
+function Product({ title, price, image }) {
   return (
-    <div className="product-card" id={id}>
+    <div className="product-card">
       <div className="product-image">
         <img src={image} alt="Img" />
       </div>
