@@ -10,7 +10,7 @@ function Header({ categories, handleChange }) {
           <label>Filter by:</label>
 
           <select onChange={handleChange}>
-            <option value="all"> All </option>
+            <option value="All"> All </option>
             {categories.map((category, i) => (
               <option key={i} value={category}>
                 {" "}

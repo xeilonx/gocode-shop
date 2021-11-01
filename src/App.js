@@ -274,26 +274,27 @@ const initProducts = [
 ];
 
 function App() {
-  const [productsDetails, setProductsDetails] = useState(initProducts);
+  const [products, setProducts] = useState(initProducts);
+
   const categories = initProducts
     .map((p) => p.category)
     .filter((value, index, array) => array.indexOf(value) === index);
 
   const handleChange = (e) => {
-    if (e.target.value === "all") {
-      setProductsDetails(initProducts);
+    if (e.target.value === "All") {
+      setProducts(initProducts);
     } else {
-      const filterCategories = initProducts.filter(
+      const filterProducts = initProducts.filter(
         (product) => product.category === e.target.value
       );
-      setProductsDetails(filterCategories);
+      setProducts(filterProducts);
     }
   };
 
   return (
     <div>
       <Header categories={categories} handleChange={handleChange} />
-      <Products productsDetails={productsDetails} />
+      <Products products={products} />
     </div>
   );
 }
