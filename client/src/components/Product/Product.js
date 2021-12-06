@@ -1,9 +1,8 @@
 import { useState, useContext, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import CartContext from '../../CartContext';
 import TotalContext from '../../TotalContext';
 import './Product.css';
-
-
 
 function Product({ title, price, image, id }) {
     const [product, setProduct] = useState(0);
@@ -76,13 +75,15 @@ function Product({ title, price, image, id }) {
     return (
 
         <div className="product-card">
+            <Link to={`/ProductDetails/${id}`}>
             <div className="product-image">
                 <img
                     src={image}
                     alt="Img"
                 />
             </div>
-
+            </Link>
+            
             <div className="product-info">
 
                 <h5>{title}</h5>
@@ -96,7 +97,7 @@ function Product({ title, price, image, id }) {
 
 
             </div>
-        </div >
+        </div>
     );
 }
 

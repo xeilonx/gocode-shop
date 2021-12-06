@@ -7,11 +7,13 @@ function Counter() {
 
     return (
         <div className="App">
-            <span className="btn" onClick={() => setCount(!count)}></span>
-            {count && <div> </div>}
+            <button className="btn" onClick={() => setCount(!count)}>Welcome to GoCode Shop</button>
+            {count && <div></div>}
         </div>
     );
 }
 
 
 export default Counter;
+
+

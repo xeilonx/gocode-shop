@@ -11,15 +11,14 @@
   border: 2px solid white;
   transition-duration: 0.4s;
   border-radius: 10px;
-  margin-top: -100px;
-
-  margin-left: 25px;
+  margin-top: 40px;
+  /* margin-left: 25px; */
 }
-
+/* 
 .btn:hover {
   background-color: black;
   color: white;
-}
+} */
 
 .App {
   font-weight: bolder;
