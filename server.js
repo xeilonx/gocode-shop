@@ -86,5 +86,5 @@ mongoose.connect(
       console.log("ERROR");
    }
    initProducts();
-   app.listen(8000);
+   app.listen(process.env.POTR || 8000);
 });
