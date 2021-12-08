@@ -84,6 +84,8 @@ mongoose.connect(
    `mongodb+srv://${DB_USER}:${DB_PASS}@${DB_HOST}/${DB_NAME}?retryWrites=true&w=majority`, (err) => {
    if (err){
       console.log("ERROR");
+   } else {
+      console.log("SUCCESS");
    }
    initProducts();
    app.listen(process.env.POTR || 8000);
