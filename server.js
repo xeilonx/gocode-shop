@@ -20,8 +20,9 @@ const Product = mongoose.model("Product", {
 
 const app = express();
 app.use(express.json());
+app.use(express.static("client/build"));
 
-app.get("/products", async (req, res) => {
+app.get("/api/products", async (req, res) => {
   const { term } = req.query;
   try {
     const products = await Product.find();
@@ -36,7 +37,7 @@ app.get("/products", async (req, res) => {
   }
 });
 
-app.get("/products/:id", async (req, res) => {
+app.get("/api/products/:id", async (req, res) => {
   const { id } = req.params;
   try {
     const product = await Product.findById(id);
@@ -46,21 +47,21 @@ app.get("/products/:id", async (req, res) => {
   }
 });
 
-app.post("/products", async (req, res) => {
+app.post("/api/products", async (req, res) => {
   const { title, category, price, image } = req.body;
   const product = new Product({ title, category, price, image });
   await product.save();
   res.send(product);
 });
 
-app.put("/products/:id", async (req, res) => {
+app.put("/api/products/:id", async (req, res) => {
   const { id } = req.params;
   const body = req.body;
   const product = await Product.findByIdAndUpdate(id, body);
   res.send(product);
 });
 
-app.delete("/products/:id", async (req, res) => {
+app.delete("/api/products/:id", async (req, res) => {
   const { id } = req.params;
   try {
     const product = await Product.findByIdAndDelete(id);
@@ -82,6 +83,10 @@ async function initProducts() {
     await Product.insertMany(mappedProducts);
   }
 }
+
+app.get("*", (req, res) => {
+  res.sendFile(__dirname + "/client/build/index.html");
+});
 
 const { DB_USER, DB_PASS, DB_HOST, DB_NAME } = process.env;
 

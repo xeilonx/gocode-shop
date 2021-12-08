@@ -17,7 +17,7 @@ function Home() {
   const [category, setCategory] = useState("all");
 
   useEffect(() => {
-    fetch("https://fakestoreapi.com/products")
+    fetch("/api/products")
       .then((response) => response.json())
       .then((data) => {
         setInitProducts(data);
